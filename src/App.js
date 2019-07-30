@@ -29,7 +29,7 @@ class App extends React.Component<Props> {
   submitHandler = (e) => {
     e.preventDefault();
     const name = this.props.name;
-    axios.get(`https://api.github.com/search/repositories?q=${name}+language:assembly&sort=stars&order=desc`)
+    axios.get(`https://api.github.com/search/repositories?q=${name}&sort=stars&order=desc`)
     .then((response) => {
       const data = response.data;
       this.props.onCacheData(data)
