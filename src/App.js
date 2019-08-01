@@ -50,7 +50,7 @@ class App extends React.Component<Props> {
     return (
       <div className="App">
         <SearchBar />
-        <p>RHB GitHub Repo Finder</p>
+        <p>GitHub Repo Finder</p>
         <form onSubmit={this.submitHandler}>
           <div style={{margin: "10px"}}>
             <TextField

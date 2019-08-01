@@ -80,7 +80,7 @@ function SearchAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-            RHB GitHub Repo Finder
+            GitHub Repo Finder
           </Typography>
           <div className={classes.grow} />
           {/* <div className={classes.search}>
