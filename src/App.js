@@ -32,6 +32,7 @@ class App extends React.Component<Props> {
     axios.get(`https://api.github.com/search/repositories?q=${name}&sort=stars&order=desc`)
     .then((response) => {
       const data = response.data;
+      console.log(data);
       this.props.onCacheData(data)
       return response
     })

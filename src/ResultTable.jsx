@@ -15,6 +15,9 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import StarRate from '@material-ui/icons/StarRateRounded';
+import ArrowForwardRounded from '@material-ui/icons/ArrowForwardRounded';
 import { connect } from 'react-redux';
 
 const actionsStyles = theme => ({
@@ -136,21 +139,31 @@ class ResultTable extends React.Component<Props> {
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
-                  <TableCell>Full Name</TableCell>
-                  <TableCell>Description</TableCell>
+                  <TableCell>Full Name & Description</TableCell>
                   <TableCell>Language</TableCell>
                   <TableCell>Stars Count</TableCell>
-                  <TableCell align="right">Updated At</TableCell>
+                  <TableCell>Details</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {data.slice(this.props.page * this.props.rowsPerPage, this.props.page * this.props.rowsPerPage + this.props.rowsPerPage).map(row => (
                   <TableRow key={row.id}>
-                    <TableCell>{row.full_name}</TableCell>
-                    <TableCell>{row.description}</TableCell>
+                    <TableCell>
+                      <Typography variant="h6">{row.full_name}</Typography>
+                      <Typography>{row.description.substr(0, 60).concat('...')}</Typography>
+                    </TableCell>
                     <TableCell>{row.language}</TableCell>
-                    <TableCell>{row.stargazers_count}</TableCell>
-                    <TableCell align="right">{row.updated_at}</TableCell>
+                    <TableCell>
+                      <div style={{display: "flex"}}>
+                        <StarRate style={{color: "#fdcb6e"}}/>
+                        {row.stargazers_count}
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <Button href={row.html_url} target="_blank"> 
+                        <ArrowForwardRounded />
+                      </Button>
+                    </TableCell>
                   </TableRow>
                 ))}
                 {emptyRows > 0 && (
